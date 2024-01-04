@@ -1,0 +1,58 @@
+Artichoke
+Asparagus
+Aubergene
+Avocado
+Beet
+Bok Choy
+Broccoli
+Broccolini
+Broccoli
+Raab
+Brussels Sprouts
+Chinese Cabbage
+Green Cabbage
+Purple Cabbage
+Savoy Cabbage
+Carrots
+Cauliflower
+Celeriac Celery
+Chard
+Chicory
+Corn
+Cress
+Cucumbers
+Daikon
+Garlic
+Green Beans
+Greens
+Collard Greens
+Mustard Greens
+Gourds
+Jicama
+Kale
+Kohlrabi
+Leeks
+Arugula
+Lettuce
+Butter Lettuce
+Endive Lettuce
+Green Leaf Lettuce
+Red Leaf Lettuce
+Romaine Lettuce
+Lima Beans
+Mushrooms
+Okra
+Onions
+Green Onions
+Parsnips
+Peas
+Snap Peas
+Sugar Peas
+Snow Peas
+Anaheim Peppers
+Sweet peppers
+Potatoes
+Pumpkin
+Radicchio
+Radish
+Rhubarb

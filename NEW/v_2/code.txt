@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "movie.h"
+#include "language.h"
+
+int main(int argc, char *argv[]) {
+
+    // get file name
+    char* file_name = argv[1];
+    
+    // parse file into movie list
+    struct movie* movie_list = parse_file(file_name);
+
+    // get size of movie list
+    int movie_list_size = get_list_size(movie_list);
+    
+    // print 
+    printf("\nProcessed file %s and parsed data for %d movies\n", file_name, movie_list_size);
+
+    int user_option_num = 0;
+
+    while (1) {
+        // show user input options
+        printf("\n1. Show movies released in the specified year\n");
+        printf("2. Show highest rated movie for each year\n");
+        printf("3. Show the title and year of release of all movies in a specific language\n");
+        printf("4. Exit from the program\n");
+        printf("\nEnter a choice from 1 to 4: ");
+
+        // get user input number
+        scanf("%d", &user_option_num);
+
+        if (user_option_num == 1) {
+            int input_year;
+
+            printf("\nEnter the year for which you want to see movies: ");
+            
+            scanf("%d", &input_year);
+
+            printf("\n");
+
+            struct movie* movie_year_list = get_year_list(movie_list, input_year);
+
+            if (movie_year_list != NULL) {
+                while (movie_year_list != NULL) {
+                    printf("%s\n", get_title(movie_year_list));
+                    movie_year_list = get_next_movie(movie_year_list);
+                }
+            } else {
+                printf("No data about movies released in the year %d\n", input_year);
+            }
+
+        } else if (user_option_num == 2) {
+            struct movie* ranked_list = get_ranked_list(movie_list);
+
+            printf("\n");
+
+            while (ranked_list != NULL) {
+                printf("%d %.1f %s\n", get_year(ranked_list), get_rating_value(ranked_list), get_title(ranked_list));
+                ranked_list = get_next_movie(ranked_list);
+            }
+        } else if (user_option_num == 3) {
+            char* input_language = malloc(20 * sizeof(char));
+
+            printf("\nEnter the language for which you want to see movies: ");
+
+            scanf("%s", input_language);
+
+            printf("\n");
+
+            struct movie* movie_language_list = get_movie_language_list(movie_list, input_language);
+
+            if (movie_language_list != NULL) {
+                while (movie_language_list != NULL) {
+                    printf("%d %s\n", get_year(movie_language_list), get_title(movie_language_list));
+                    movie_language_list = get_next_movie(movie_language_list);
+                }
+            } else {
+                printf("No data about movies released in %s\n", input_language);
+            }
+
+            free(input_language);
+
+        } else if (user_option_num == 4) {
+            // break loop
+            break;
+
+        } else {
+            // print error message and reprompt user
+            printf("\nYou entered an incorrect choice. Try again.\n");
+            
+        }
+    }
+
+    return 0;
+}
