@@ -11,7 +11,7 @@ stoi = {s:i+1 for i,s in enumerate(chrs)}
 stoi['|'] = 0
 itos = {i:s for s,i in stoi.items()}
 
-block_size = 20
+block_size = 100
 
 def build_dataset (names):
     t_in, t_out = [], []
@@ -127,7 +127,7 @@ params = [lookup] + [param for layer in neural_net_layers for param in layer.par
 for param in params:
     param.requires_grad = True
 
-num_tests = 100000
+num_tests = 1000000
 percentage = 0
 
 for i in range(num_tests):
@@ -183,7 +183,7 @@ print()
 
 rand_gen_2 = torch.Generator().manual_seed(2147483647+10)
 
-for i in range(10):
+for i in range(50):
     out = []
     context = [0] * block_size
     while True:
